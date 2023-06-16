@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<title>无标题文档</title>
+<link href="CSS.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+	<div class="container">
+		<div class="slider">
+			<div class="slide"><img src="网页素材/WechatIMG1839.jpeg" alt=""></div>
+			<div class="slide"><img src="网页素材/WechatIMG1840.jpeg" alt=""></div>
+			<div class="slide"><img src="网页素材/WechatIMG1841.jpeg" alt=""></div>
+			<div class="slide"><img src="网页素材/WechatIMG1842.jpeg" alt=""></div>
+			<div class="slide"><img src="网页素材/WechatIMG1843.jpeg" alt=""></div>
+			<div class="slide"><img src="网页素材/WechatIMG1844.jpeg" alt=""></div>
+			<div class="slide"><img src="网页素材/WechatIMG1845.jpeg" alt=""></div>
+			<div class="slide"><img src="网页素材/WechatIMG1846.jpeg" alt=""></div>
+			<div class="slide"><img src="网页素材/WechatIMG1847.jpeg" alt=""></div>
+			<div class="slide"><img src="网页素材/WechatIMG1848.jpeg" alt=""></div>
+			<div class="slide"><img src="网页素材/WechatIMG1849.jpeg" alt=""></div>
+			<div class="slide"><img src="网页素材/WechatIMG1850.jpeg" alt=""></div>
+		</div>
+	</div>
+</body>
+<script>
+		var container = document.querySelector('.container');
+		var slider = document.querySelector('.slider');
+		var slides = document.querySelectorAll('.slide');
+		var slideWidth = slides[0].offsetWidth;
+		var currentIndex = 0;
+
+		container.addEventListener('mousedown', function(event) {
+			event.preventDefault();
+			var startX = event.clientX;
+			var currentLeft = parseInt(slider.style.left) || 0;
+
+			container.addEventListener('mousemove', onMouseMove);
+			container.addEventListener('mouseup', onMouseUp);
+
+			function onMouseMove(event) {
+				var moveX = event.clientX - startX;
+				var left = currentLeft + moveX;
+
+				if (left > 0) {
+					left = 0;
+				} else if (left < -(slides.length - 1) * slideWidth) {
+					left = -(slides.length - 1) * slideWidth;
+				}
+
+				slider.style.left = left + 'px';
+			}
+
+			function onMouseUp(event) {
+				container.removeEventListener('mousemove', onMouseMove);
+				container.removeEventListener('mouseup', onMouseUp);
+
+				var endX = event.clientX;
+				var distance = endX - startX;
+
+				if (distance > 0 && currentIndex > 0) {
+					currentIndex--;
+				} else if (distance < 0 && currentIndex < slides.length - 1) {
+					currentIndex++;
+				}
+
+				var left = -currentIndex * slideWidth;
+				slider.style.left = left + 'px';
+			}
+		});
+	</script>
+</html>
+

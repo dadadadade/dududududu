@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<title>无标题文档</title>
+<link href="CSS.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+	<div id="page7-bk">
+		<div class="p7-header" id="header"><span id="p1-s1">2023</span><span id="p1-s2">publc space</span><span id="p1-s3">Lareina&honey&jiang&dudu</span></div>
+		<div id="home" style="top: 120px;right: : 5%;"><a href="index.html" id="p2-home" style="color: #ff5e00;">home</a></div>
+		<h1>Children's Complaint<br>Center</h1>
+		<p>Emotion is an indescribable psychological sensation, and children may have experienced their own psychological changes as they grow up, but they do not have enough expressive ability to describe their own situation. If you want to say something, it's always difficult to attract adults' attention when it comes to worrying things. Therefore, we use the "complaint center" as the medium and use "connection; trust; confide" as the keywords in our design to encourage children to draw or write about their troubles, vent their emotions, and display them in the form of journals, so that the voices of children in the community can be heard by more people.</p>
+		<img src="网页素材/展板 _画板 1的副本.jpg" alt="" id="p7-img1">
+		<img src="网页素材/最终海报的副本.jpg" alt="" id="p7-img2"><br><br><br>
+		<div class="container3">
+		<div class="slider3">
+			<div class="slide3"><img src="网页素材/1的副本.jpg" alt=""></div>
+			<div class="slide3"><img src="网页素材/2的副本.jpg" alt=""></div>
+			<div class="slide3"><img src="网页素材/3的副本.jpg" alt=""></div>
+			<div class="slide3"><img src="网页素材/4的副本.jpg" alt=""></div>
+			<div class="slide3"><img src="网页素材/5的副本.jpg" alt=""></div>
+		</div>
+	</div><br><br><br>
+		<video src="视频的副本.mp4" controls></video>
+	</div>
+</body>
+<script>
+		var container3 = document.querySelector('.container3');
+		var slider3 = document.querySelector('.slider3');
+		var slides3 = document.querySelectorAll('.slide3');
+		var slideWidth3 = slides3[0].offsetWidth;
+		var currentIndex3 = 0;
+
+		container3.addEventListener('mousedown', function(event) {
+			event.preventDefault();
+			var startX = event.clientX;
+			var currentLeft = parseInt(slider3.style.left) || 0;
+
+			container3.addEventListener('mousemove', onMouseMove);
+			container3.addEventListener('mouseup', onMouseUp);
+
+			function onMouseMove(event) {
+				var moveX = event.clientX - startX;
+				var left = currentLeft + moveX;
+
+				if (left > 0) {
+					left = 0;
+				} else if (left < -(slides3.length - 1) * slideWidth3) {
+					left = -(slides3.length - 1) * slideWidth3;
+				}
+
+				slider3.style.left = left + 'px';
+			}
+
+			function onMouseUp(event) {
+				container3.removeEventListener('mousemove', onMouseMove);
+				container3.removeEventListener('mouseup', onMouseUp);
+
+				var endX = event.clientX;
+				var distance = endX - startX;
+
+				if (distance > 0 && currentIndex3 > 0) {
+					currentIndex3--;
+				} else if (distance < 0 && currentIndex3 < slides3.length - 1) {
+					currentIndex3++;
+				}
+
+				var left = -currentIndex3 * slideWidth3;
+				slider3.style.left = left + 'px';
+			}
+		});
+	</script>
+</html>
+
+
+

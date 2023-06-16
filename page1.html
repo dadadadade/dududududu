@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<title>无标题文档</title>
+<link href="CSS.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+	<div id="page1-bk">
+		<div class="p1-header" id="header"><span id="p1-s1">2020</span><span id="p1-s2">The Story of the House</span><span id="p1-s3">dudu</span></div>
+		<div id="p1-bk1">
+			<h1>The House of the<br>Spirits</h1>
+			<div id="home"><a href="index.html" id="p1-home">home</a></div>
+		</div>
+		<p id="p1-p0">It is divided into two books.The first book first introduces the environment in which she lives,and then includuces the second book to the which she lives</p>
+		<span id="p1-sp">This is some of the inner pages of the first book</span><br><br><br>
+		<div id="p1-bk2">
+			<div class="slider1">
+				<div class="slide1"><img src="网页素材/WechatIMG6046.png" alt=""></div>
+				<div class="slide1"><img src="网页素材/WechatIMG6047.png" alt=""></div>
+				<div class="slide1"><img src="网页素材/WechatIMG5816.png" alt=""></div>
+				<div class="slide1"><img src="网页素材/WechatIMG6048.png" alt=""></div>
+				<div class="slide1"><img src="网页素材/WechatIMG6049.png" alt=""></div>
+				<div class="slide1"><img src="网页素材/WechatIMG5832.png" alt=""></div>
+			</div>
+		</div>
+		<br><br><br><br><br><br><br><br>
+		<span id="p1-sp2">This is some of the inner pages of the first book</span><br><br>
+		<div id="p1-bk3">
+			<div class="slider2">
+				<div class="slide2"><img src="网页素材/WechatIMG6050.png" alt=""></div>
+				<div class="slide2"><img src="网页素材/WechatIMG6052.png" alt=""></div>
+				<div class="slide2"><img src="网页素材/WechatIMG6053.png" alt=""></div>
+				<div class="slide2"><img src="网页素材/WechatIMG6054.png" alt=""></div>
+				<div class="slide2"><img src="网页素材/WechatIMG6055.png" alt=""></div>
+				<div class="slide2"><img src="网页素材/WechatIMG5819.png" alt=""></div>
+				<div class="slide2"><img src="网页素材/WechatIMG6051.png" alt=""></div>
+				<div class="slide2"><img src="网页素材/WechatIMG5817.png" alt=""></div>
+				<div class="slide2"><img src="网页素材/WechatIMG5818.png" alt=""></div>
+			</div>
+		</div><br><br>
+		<p id="p1-p">The house is hidden on an island inMassachusetts.This book begins with Flora'sdaily life on the island.The first half of thisbook describes the surrounding area wherethe house is located, and the surroundingenvironment is also an important part of thehouse. Then the sight starts from the storyof flora traveling on the island and followsher into the hidden house in the woods.Thisbook may be more like a cartoon or a movieor even a puzzle game. graph is basicallycontinuous.l hope to give people a sense oflens. It seems that each picture is a key lensof the film or a key scene of the puzzle gamecausing the reader's imagination, imaginingwhat will happen in the next second or nextpage, what she will do, and maintaining asense of mystery.Some of the objects in theroom are collages, and some are photos I tookafter adjusting the objects in the virtual engineMany items in the room are related to what loradoes, and there are also connections betweenrooms. The items in the previous room suggestthe story of the next room.l hope to make mystory more real, like telling a real thing.So I began to think about who the narrator isor what the identity of the narrator is. Finally, lchose the third person because I thought florawould not want to tell others her own story. Butif it's the third person and flora is an elf, howcan others know everything that happenedto her? So I identified the narrator as a friendof flora and followed her to her house for thefirst time. But even a friend, the narrator can'tunderstand what happened to her and can'tnarrate from the perspective of God. So whenher eyes turned to her entering the house, thenarrator stopped telling, as if she had reallyentered her house for the first time.So let'sfollow her line of sight and enter the house.</p>
+	</div>
+</body>
+<script>
+		var container1 = document.querySelector('#p1-bk2');
+		var slider1 = document.querySelector('.slider1');
+		var slides1 = document.querySelectorAll('.slide1');
+		var slideWidth1 = slides1[0].offsetWidth;
+		var currentIndex1 = 0;
+
+		container1.addEventListener('mousedown', function(event) {
+			event.preventDefault();
+			var startX = event.clientX;
+			var currentLeft = parseInt(slider1.style.left) || 0;
+
+			container1.addEventListener('mousemove', onMouseMove);
+			container1.addEventListener('mouseup', onMouseUp);
+
+			function onMouseMove(event) {
+				var moveX = event.clientX - startX;
+				var left = currentLeft + moveX;
+
+				if (left > 0) {
+					left = 0;
+				} else if (left < -(slides1.length - 1) * slideWidth1) {
+					left = -(slides1.length - 1) * slideWidth1;
+				}
+
+				slider1.style.left = left + 'px';
+			}
+
+			function onMouseUp(event) {
+				container1.removeEventListener('mousemove', onMouseMove);
+				container1.removeEventListener('mouseup', onMouseUp);
+
+				var endX = event.clientX;
+				var distance = endX - startX;
+
+				if (distance > 0 && currentIndex1 > 0) {
+					currentIndex1--;
+				} else if (distance < 0 && currentIndex1 < slides1.length - 1) {
+					currentIndex1++;
+				}
+
+				var left = -currentIndex1 * slideWidth1;
+				slider1.style.left = left + 'px';
+			}
+		});
+	
+	/**/
+	var container2 = document.querySelector('#p1-bk3');
+		var slider2 = document.querySelector('.slider2');
+		var slides2 = document.querySelectorAll('.slide2');
+		var slideWidth2 = slides2[0].offsetWidth;
+		var currentIndex2 = 0;
+
+		container2.addEventListener('mousedown', function(event) {
+			event.preventDefault();
+			var startX = event.clientX;
+			var currentLeft = parseInt(slider2.style.left) || 0;
+
+			container2.addEventListener('mousemove', onMouseMove);
+			container2.addEventListener('mouseup', onMouseUp);
+
+			function onMouseMove(event) {
+				var moveX = event.clientX - startX;
+				var left = currentLeft + moveX;
+
+				if (left > 0) {
+					left = 0;
+				} else if (left < -(slides2.length - 1) * slideWidth2) {
+					left = -(slides2.length - 1) * slideWidth2;
+				}
+
+				slider2.style.left = left + 'px';
+			}
+
+			function onMouseUp(event) {
+				container2.removeEventListener('mousemove', onMouseMove);
+				container2.removeEventListener('mouseup', onMouseUp);
+
+				var endX = event.clientX;
+				var distance = endX - startX;
+
+				if (distance > 0 && currentIndex2 > 0) {
+					currentIndex2--;
+				} else if (distance < 0 && currentIndex2 < slides2.length - 1) {
+					currentIndex2++;
+				}
+
+				var left = -currentIndex2 * slideWidth2;
+				slider2.style.left = left + 'px';
+			}
+		});
+	</script>
+</html>
